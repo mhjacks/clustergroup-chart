@@ -79,4 +79,10 @@ spec:
   {{- end }}{{/* if $.Values.global.options.useCSV */}}
 ---
 {{- end }}{{/* if $subs.namespaces */}}
+{{- range $objname, $obj := $subs.extraObjects }}
+{{- if $obj }}
+---
+{{ $obj | toYaml }}
+{{- end }}{{- /* if $obj */}}
+{{- end }}{{/* range $subs.extraObjects */}}
 {{- end }}{{/* range .Values.clusterGroup.subscriptions */}}
