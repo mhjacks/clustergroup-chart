@@ -1002,10 +1002,6 @@
             "Automatic"
           ]
         },
-        "extraObjects": {
-          "type": "object",
-          "description": "Extra objects to add at the clustergroup level. Preferred to be added here than at top-level as the need for this is primarily for ArgoCD Resource hooks."
-        },
         "annotations": {
           "type": "object"
         },
