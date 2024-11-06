@@ -1011,6 +1011,10 @@
         },
         "disabled": {
           "type": "boolean"
+        },
+        "sequenceJob": {
+          "type": "object",
+          "description": "Will create an ArgoCD Resource Hook to help sequence subscription installs if needed"
         }
       },
       "required": [
