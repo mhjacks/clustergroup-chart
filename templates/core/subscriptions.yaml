@@ -106,11 +106,11 @@ metadata:
               - |
                 while [ 1 ];
                 do
-                  oc get {{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }}  {{- if $subs.sequenceJob.resourceNamespace }}-n {{ $subs.sequenceJob.resourceNamespace }}{{- end }} && break
-                  echo "{{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }} {{- if $subs.sequenceJob.resourceNamespace }}in {{ $subs.sequenceJob.resourceNamespace}}{{- end }} not found, waiting..."
+                  oc get {{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }}  {{- if $subs.sequenceJob.resourceNamespace }} -n {{ $subs.sequenceJob.resourceNamespace }}{{- end }} && break
+                  echo "{{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }} {{- if $subs.sequenceJob.resourceNamespace }} in {{ $subs.sequenceJob.resourceNamespace}} {{- end }} not found, waiting..."
                   sleep 5
                 done
-                echo "{{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }} {{- if $subs.sequenceJob.resourceNamespace }}in {{ $subs.sequenceJob.resourceNamespace}} {{- end }} found, exiting..."
+                echo "{{ $subs.sequenceJob.resourceType }} {{ $subs.sequenceJob.resourceName }} {{- if $subs.sequenceJob.resourceNamespace }} in {{ $subs.sequenceJob.resourceNamespace}} {{- end }} found, exiting..."
                 exit 0
             {{- end }}
 ---
