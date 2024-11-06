@@ -84,7 +84,7 @@ spec:
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{ $subs.name }}-sequenceJob
+  name: {{ $subs.name }}-sequencejob
   annotations:
     argocd.argoproj.io/hook: {{ coalesce $subs.sequenceJob.hookType "Sync" }}
     argocd.argoproj.io/sync-wave: {{ coalesce $subs.sequenceJob.syncWave (get $subs.annotations "argocd.argoproj.io/sync-wave") | quote }}
