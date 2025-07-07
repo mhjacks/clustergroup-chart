@@ -55,7 +55,7 @@ spec:
                 - -e
                 - 'pattern_name={{ .Values.global.pattern }}'
                 - -e
-                - 'pattern_dir=/git/home'
+                - 'pattern_dir=/git/repo'
                 - -e
                 - 'secrets_backing_store=vault'
                 - -e
