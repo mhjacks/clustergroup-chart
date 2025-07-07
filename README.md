@@ -1,6 +1,6 @@
 # clustergroup
 
-![Version: 0.9.18](https://img.shields.io/badge/Version-0.9.18-informational?style=flat-square)
+![Version: 0.9.19](https://img.shields.io/badge/Version-0.9.19-informational?style=flat-square)
 
 A Helm chart to create per-clustergroup ArgoCD applications and any required namespaces or subscriptions.
 
@@ -55,6 +55,7 @@ This chart is used to set up the basic building blocks in [Validated Patterns](h
 | clusterGroup.sharedValueFiles | list | `[]` |  |
 | clusterGroup.subscriptions | object | `{}` |  |
 | clusterGroup.targetCluster | string | `"in-cluster"` |  |
+| global.clusterPushSecrets | bool | `false` |  |
 | global.extraValueFiles | list | `[]` |  |
 | global.options.applicationRetryLimit | int | `20` |  |
 | global.options.installPlanApproval | string | `"Automatic"` |  |

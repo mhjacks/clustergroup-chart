@@ -1,6 +1,7 @@
 global:
   extraValueFiles: []
   pattern: common
+  clusterPushSecrets: false
   secretStore:
     backend: "vault"
   targetRevision: main
