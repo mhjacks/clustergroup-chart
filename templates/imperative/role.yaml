@@ -10,6 +10,12 @@ rules:
   {{ toYaml $.Values.clusterGroup.imperative.roleYaml | nindent 2 }}
 {{- else }}
   - apiGroups:
+    - ""
+    resources:
+    - "pods/exec"
+    verbs:
+    - '*'
+  - apiGroups:
     - '*'
     resources:
     - '*'
