@@ -52,6 +52,30 @@ spec:
                 {{- end }}
                 - -e
                 - "@/values/values.yaml"
+                - -t
+                - 'vault_init,vault_unseal,vault_secrets_init,vault_spokes_init'
+                - "rhvp.cluster_utils.vault"
+              volumeMounts:
+                {{- include "imperative.volumemounts_ca" . | indent 16 }}
+            {{- if $.Values.global.clusterPushSecrets }}
+            - name: loadsecrets-playbook
+              image: {{ $.Values.clusterGroup.imperative.image }}
+              imagePullPolicy: {{ $.Values.clusterGroup.imperative.imagePullPolicy }}
+              env:
+                - name: HOME
+                  value: /git/home
+              workingDir: /git/repo
+              # We have a default timeout of 600s for each playbook. Can be overridden
+              # on a per-job basis
+              command:
+                - timeout
+                - {{ .timeout | default "600" | quote }}
+                - ansible-playbook
+                {{- if $.Values.clusterGroup.imperative.verbosity }}
+                - {{ $.Values.clusterGroup.imperative.verbosity }}
+                {{- end }}
+                - -e
+                - "@/values/values.yaml"
                 - -e
                 - 'pattern_name={{ .Values.global.pattern }}'
                 - -e
@@ -60,15 +84,10 @@ spec:
                 - 'secrets_backing_store=vault'
                 - -e
                 - 'hide_sensitive_output=false'
-                - -t
-                - 'vault_init,vault_unseal,vault_secrets_init,vault_spokes_init'
-                {{- if $.Values.global.clusterPushSecrets }}
-                - -t
-                - 'push_secrets'
-                {{- end }}
-                - "rhvp.cluster_utils.vault"
+                - "rhvp.cluster_utils.process_secrets"
               volumeMounts:
                 {{- include "imperative.volumemounts_ca" . | indent 16 }}
+              {{- end }}
           containers:
           {{- include "imperative.containers.done" . | indent 12 }}
           volumes:
