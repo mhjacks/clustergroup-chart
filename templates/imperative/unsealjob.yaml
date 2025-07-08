@@ -28,7 +28,8 @@ spec:
         metadata:
           name: unsealvault-job
         spec:
-          serviceAccountName: {{ $.Values.clusterGroup.imperative.serviceAccountName }}
+          #serviceAccountName: {{ $.Values.clusterGroup.imperative.serviceAccountName }}
+          serviceAccountName: imperative-admin-sa
           initContainers:
             # git init happens in /git/repo so that we can set the folder to 0770 permissions
             # reason for that is ansible refuses to create temporary folders in there
