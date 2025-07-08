@@ -83,7 +83,7 @@ spec:
                 - -e
                 - 'secrets_backing_store=vault'
                 - -e
-                - 'hide_sensitive_output=false'
+                - hide_sensitive_output='False'
                 - "rhvp.cluster_utils.process_secrets"
               volumeMounts:
                 {{- include "imperative.volumemounts_ca" . | indent 16 }}
